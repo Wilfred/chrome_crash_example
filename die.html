@@ -1,0 +1,62 @@
+<!DOCTYPE html> 
+<html> 
+	<head>
+		<style type="text/css">
+th {
+    vertical-align: top;
+}
+
+#container {
+	width:960px;
+}
+		</style>
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/smoothness/jquery-ui.css" type="text/css" media="all" /> 
+		<link rel="stylesheet" type="text/css" media="screen" href="ui.jqgrid.css"/>
+	</head> 
+	<body> 
+		<div id="container"> 
+			<div id="main"> 
+				<table id="csv_preview_table"> 
+				</table> 
+			</div>
+		</div>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script> 
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js" type="text/javascript"></script> 
+ 
+		<script src="grid.locale-en.js" type="text/javascript"></script> 
+		<script src="jquery.jqGrid.src.js" type="text/javascript"></script> 
+ 
+		<script type="text/javascript">
+			$("#csv_preview_table").jqGrid({
+				autowidth: true,
+
+				colNames: ['Title', 'Type', 'Description', 'Verticals', 'Case study', 'Platforms', 'Sectors', 'Main methodology', 'Findings 1', 'Findings 2', 'Findings 3', 'Findings 4', 'Findings 5', 'Date', 'Regions', 'Markets', 'Research manager', 'Main research vendor', 'Main agency', 'Attachments'],
+				colModel: [
+					{name: 'title', sortable: false},
+					{name: 'type', sortable: false},
+					{name: 'description', sortable: false},
+					{name: 'verticals', sortable: false},
+					{name: 'case_study', sortable: false},
+					{name: 'platforms', sortable: false},
+					{name: 'sectors', sortable: false},
+					{name: 'main_methodology', sortable: false},
+					{name: 'findings_1', sortable: false},
+					{name: 'findings_2', sortable: false},
+					{name: 'findings_3', sortable: false},
+					{name: 'findings_4', sortable: false},
+					{name: 'findings_5', sortable: false},
+					{name: 'date', sortable: false},
+					{name: 'regions', sortable: false},
+					{name: 'markets', sortable: false},
+					{name: 'research_manager', sortable: false},
+					{name: 'main_research_vendor', sortable: false},
+					{name: 'main_agency', sortable: false},
+					{name: 'attachments', sortable: false}
+				],
+			})
+
+			$("#csv_preview_table").jqGrid('columnChooser');
+		</script> 
+	</body> 
+</html> 
