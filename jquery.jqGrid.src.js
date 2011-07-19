@@ -2830,6 +2830,9 @@ $.jgrid.extend({
 					fndh=true;
 				}
 			});
+			// if (colname[0] === "case_study") {
+			// 	throw 5;
+			// }
 			if(fndh===true) {
 				if($t.p.shrinkToFit === false) {
 					$($t).jqGrid("setGridWidth",$t.grid.width );
@@ -2837,6 +2840,9 @@ $.jgrid.extend({
 					$($t).jqGrid("setGridWidth",$t.p.tblwidth );
 				}
 			}
+			// if (colname[0] === "case_study") {
+			// 	throw 6;
+			// }
 		});
 	},
 	hideCol : function (colname) {
@@ -2902,18 +2908,11 @@ $.jgrid.extend({
 			}
 			if(isNaN(nwidth)) {return;}
 			else { nwidth = parseInt(nwidth,10); $t.grid.width = $t.p.width = nwidth;}
-			$("#gbox_"+$.jgrid.jqID($t.p.id)).css("width",nwidth+"px");
-			$("#gview_"+$.jgrid.jqID($t.p.id)).css("width",nwidth+"px");
 			$($t.grid.bDiv).css("width",nwidth+"px");
-			$($t.grid.hDiv).css("width",nwidth+"px");
-			if($t.p.pager ) {$($t.p.pager).css("width",nwidth+"px");}
-			if($t.p.toppager ) {$($t.p.toppager).css("width",nwidth+"px");}
-			if($t.p.toolbar[0] === true){
-				$($t.grid.uDiv).css("width",nwidth+"px");
-				if($t.p.toolbar[1]=="both") {$($t.grid.ubDiv).css("width",nwidth+"px");}
-			}
-			if($t.p.footerrow) { $($t.grid.sDiv).css("width",nwidth+"px"); }
-			if(shrink ===false && $t.p.forceFit === true) {$t.p.forceFit=false;}
+
+			$('table:first').css("width",100 +"px");
+
+			
 			if(shrink===true) {
 				$.each($t.p.colModel, function(i) {
 					if(this.hidden===false){
@@ -2964,6 +2963,7 @@ $.jgrid.extend({
 				// Wilfred hacky fix for this issue: https://github.com/tonytomov/jqGrid/issues/104
 				if (!lvc) { return; }
 
+
 				$t.p.colModel[lvc].width += cr;
 				$t.p.tblwidth = initwidth+cr+brd*vc+gw;
 				if($t.p.tblwidth > nwidth) {
@@ -2973,21 +2973,10 @@ $.jgrid.extend({
 				} else {
 					cw= $t.p.colModel[lvc].width;
 				}
-				$t.grid.headers[lvc].width = cw;
+				// dodgy!
 				$t.grid.headers[lvc].el.style.width=cw+"px";
-				if(cle) { $t.grid.cols[lvc].style.width = cw+"px"; }
-				if($t.p.footerrow) {
-					$t.grid.footers[lvc].style.width = cw+"px";
-				}
 			}
-			if($t.p.tblwidth) {
-				$('table:first',$t.grid.bDiv).css("width",$t.p.tblwidth+"px");
-				$('table:first',$t.grid.hDiv).css("width",$t.p.tblwidth+"px");
-				$t.grid.hDiv.scrollLeft = $t.grid.bDiv.scrollLeft;
-				if($t.p.footerrow) {
-					$('table:first',$t.grid.sDiv).css("width",$t.p.tblwidth+"px");
-				}
-			}
+
 		});
 	},
 	setGridHeight : function (nh) {
